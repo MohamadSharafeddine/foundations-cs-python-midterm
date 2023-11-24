@@ -24,3 +24,32 @@ def saveTabs():
 
 def importTabs():
     pass
+
+def main():
+    print("Welcome!")
+    while True:
+        displayMenu()
+        choice = int(input("Choose an option: "))
+        if choice == 1:
+            openTab()
+        elif choice == 2:
+            closeTab()
+        elif choice == 3:
+            switchTab()
+        elif choice == 4:
+            displayAllTabs()
+        elif choice == 5:
+            openNestedTab()
+        elif choice == 6:
+            sortAllTabs()
+        elif choice == 7:
+            saveTabs()
+        elif choice == 8:
+            importTabs()
+        elif choice == 9:
+            print("Exited program.")
+            break
+        else:
+            print("Invalid input.")
+
+main()
