@@ -12,7 +12,13 @@ def openTab():
     print(tabs)
 
 def closeTab():
-    pass
+    index = input("Enter index of the tab you'd like to close: ")
+    if index == "":
+        index = -1
+    else:
+        index = int(index)
+    tabs.pop(index)
+    print(tabs)
 
 def switchTab():
     pass
