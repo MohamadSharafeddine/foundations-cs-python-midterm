@@ -28,15 +28,15 @@ def switchTab():
     else:
         index = int(index)
     tab = tabs[index]
-    for key, value in tab.items():
-        r = requests.get(value)
-    print(f"{key}: ")
+    for title, url in tab.items():
+        r = requests.get(url)
+    print(f"{title}: ")
     print(r.content) 
     
-    
-
 def displayAllTabs():
-    pass
+    for tab in tabs:
+        for title, url in tab.items():
+            print(title)
 
 def openNestedTab():
     pass
