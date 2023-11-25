@@ -1,4 +1,5 @@
-tabs = []
+import requests
+tabs = [{'google': 'https://www.google.com/'}]
 
 def displayMenu():
     print("1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Sort All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
@@ -21,7 +22,18 @@ def closeTab():
     print(tabs)
 
 def switchTab():
-    pass
+    index = input("Enter index of the tab you'd like to display its content: ")
+    if index == "":
+        index = -1
+    else:
+        index = int(index)
+    tab = tabs[index]
+    for key, value in tab.items():
+        r = requests.get(value)
+    print(f"{key}: ")
+    print(r.content) 
+    
+    
 
 def displayAllTabs():
     pass
