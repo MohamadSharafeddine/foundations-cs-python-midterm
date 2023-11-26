@@ -30,7 +30,7 @@ def openTab():
 def closeTab():
     index = input("Enter index of the tab you'd like to close: ")
     while int(index) >= len(tabs):
-        index = input(f"Index must be less that {len(tabs)}: ")
+        index = input(f"Index must be less than {len(tabs)}: ")
     if index == "":
         index = last_opened_tab
         for i in range(len(tabs)):
@@ -42,13 +42,11 @@ def closeTab():
         index = int(index)
         print(f"Closing {tabs[index]["Title"]}...")
         tabs.pop(index)
-        
-    print(tabs)
 
 def switchTab():
     index = input("Enter index of the tab you'd like to display its content: ")
     while int(index) >= len(tabs):
-        index = input(f"Index must be less that {len(tabs)}: ")
+        index = input(f"Index must be less than {len(tabs)}: ")
     if index == "":
         index = last_opened_tab
         for i in range(len(tabs)):
@@ -61,6 +59,7 @@ def switchTab():
     print(r.content) 
     
 def displayAllTabs():
+    print("Opened tabs: ")
     for tab in tabs:
         print(tab["Title"])
         if len(tab["Nested Tabs"]) > 0:
@@ -69,8 +68,11 @@ def displayAllTabs():
 
 def openNestedTab():
     index = int(input("Enter index of the tab you'd like to insert this tab in: "))
+    while int(index) >= len(tabs):
+        index = input(f"Index must be less than {len(tabs)}: ")
     title = input("Enter tab's title: ").capitalize()
     url = input("Enter tab's URL: ").lower()
+    print(f"Opening {title} in {tabs[index]["Title"]}...")
     new_nested_tab = {}
     new_nested_tab["Title"] = title
     new_nested_tab["URL"] = url
@@ -80,7 +82,7 @@ def sortAllTabs():
     for tab in tabs:
         insertionSort(tab["Nested Tabs"])
     insertionSort(tabs)
-    print("All tabs have been sorted.")
+    print("Tabs have been sorted.")
 
 def saveTabs():
     file_path = input("Enter file path to save the current state of open tabs: ")
