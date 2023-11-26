@@ -1,7 +1,7 @@
 import requests
 import json
 
-tabs = [{'Title': 'Google', 'URL': 'https://www.google.com/', 'Nested Tabs': []}, {'Title': 'Facebook', 'URL': 'https://www.facebook.com/', 'Nested Tabs': []}]
+tabs = [{'Title': 'Google', 'URL': 'https://www.google.com/', 'Nested Tabs': []}]
 
 def insertionSort(list1): #O(n^2)
     border = 1
@@ -83,10 +83,14 @@ def saveTabs():
     json_object = json.dumps(tabs, indent=4)
     with open(file_path, "w") as save_file:
         save_file.write(json_object)
-    print("File saved.")
+    print("Tabs saved.")
 
 def importTabs():
-    pass
+    global tabs 
+    file_path = input("Enter file path to save the current state of open tabs: ")
+    with open(file_path) as save_file:
+        tabs = json.load(save_file)
+    print("Tabs imported.")
 
 def main():
     print("Welcome!")
