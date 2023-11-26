@@ -18,12 +18,12 @@ def displayMenu(): # O(1)
 
 # Function asks for Title and URL and then opens a new tab.
 def openTab(): # O(1)
-    title = input("Enter tab's title: ").capitalize()
+    title = input("Enter Tab's Title: ").capitalize()
     while title == "":
-        title = input("Enter tab's title (Can't be empty): ").capitalize()
-    url = input("Enter tab's URL: ").lower()
+        title = input("Enter Tab's Title (Can't be empty): ").capitalize()
+    url = input("Enter Tab's URL: ").lower()
     while url == "":
-        url = input("Enter tab's URL (Can't be empty): ").lower()
+        url = input("Enter Tab's URL (Can't be empty): ").lower()
     new_tab = {}
     new_tab["Title"] = title
     new_tab["URL"] = url
@@ -35,7 +35,7 @@ def openTab(): # O(1)
 
 # Function asks for index and then deletes (closes) the corresponding tab.
 def closeTab(): # O(N), N being the length of the list.
-    index = input("Enter index of the tab you'd like to close (if the tab is nested separate it's index by a comma): ")
+    index = input("Enter index of the Tab you'd like to close (if the Tab is nested, separate it's index by a comma): ")
     if "," in index:
         index_list = index.split(",")
         index_parent = int(index_list[0].strip())
@@ -56,7 +56,7 @@ def closeTab(): # O(N), N being the length of the list.
 
 # Function asks for index and then displays the HTML content of the corresponding tab.
 def switchTab(): # O(N), N being the length of the list.
-    index = input("Enter index of the tab you'd like to display its content (if the tab is nested separate it's index by a comma): ")
+    index = input("Enter index of the Tab you'd like to display the content of (if the Tab is nested separate it's index by a comma): ")
     if "," in index:
         index_list = index.split(",")
         index_parent = int(index_list[0].strip())
@@ -84,13 +84,13 @@ def displayAllTabs(): # O(N^2), N being the length of the list.
 
 # Function asks for index and then Title and URL to add a nested tab to the corresponding parent tab.
 def openNestedTab(): # O(1)
-    index = int(input("Enter index of the tab you'd like to insert this tab in: "))
-    title = input("Enter tab's title: ").capitalize()
+    index = int(input("Enter index of the Tab you'd like to nest this Tab in: "))
+    title = input("Enter Tab's Title: ").capitalize()
     while title == "":
-        title = input("Enter tab's title (Can't be empty): ").capitalize()
-    url = input("Enter tab's URL: ").lower()
+        title = input("Enter Tab's Title (Can't be empty): ").capitalize()
+    url = input("Enter Tab's URL: ").lower()
     while url == "":
-        url = input("Enter tab's URL (Can't be empty): ").lower()
+        url = input("Enter Tab's URL (Can't be empty): ").lower()
     print("Opening", title, "in", tabs[index]["Title"], "...")
     new_nested_tab = {}
     new_nested_tab["Title"] = title
@@ -106,7 +106,7 @@ def sortAllTabs(): # O(N^3), N being the length of the list.
 
 # Function asks for a file path and writes the tabs list to the file in JSON format.
 def saveTabs(): # Source: https://www.geeksforgeeks.org/python-json/
-    file_path = input("Enter file path to save the current state of open tabs: ")
+    file_path = input("Enter file path to save the current state of open Tabs in: ")
     json_object = json.dumps(tabs, indent=4)
     with open(file_path, "w") as save_file:
         save_file.write(json_object)
@@ -115,7 +115,7 @@ def saveTabs(): # Source: https://www.geeksforgeeks.org/python-json/
 # Function asks for a file path and loads tabs from the file.
 def importTabs(): # Source: https://www.codethebest.com/python/python-read-list-of-dictionaries-from-json-file-steps/
     global tabs 
-    file_path = input("Enter file path to save the current state of open tabs: ")
+    file_path = input("Enter file path to import Tabs from: ")
     with open(file_path) as save_file:
         tabs = json.load(save_file)
     print("Tabs imported.")
