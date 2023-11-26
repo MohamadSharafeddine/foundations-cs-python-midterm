@@ -1,5 +1,5 @@
 import requests
-tabs = [{'google': 'https://www.google.com/'}]
+tabs = []
 
 def displayMenu():
     print("1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Sort All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
@@ -7,9 +7,12 @@ def displayMenu():
 def openTab():
     title = input("Enter tab's title: ")
     url = input("Enter tab's URL: ")
-    new_tab = {title:url}
+    new_tab = {}
+    new_tab["Title"] = title
+    new_tab["URL"] = url
+    new_tab["Nested Tabs"] = []
     tabs.append(new_tab)
-    print(f"{title} opened")
+    print(f"{title} opened.")
     print(tabs)
 
 def closeTab():
@@ -39,7 +42,12 @@ def displayAllTabs():
             print(title)
 
 def openNestedTab():
-    pass
+    index = input("Enter index of the tab you'd like to insert this tab in: ")
+    if index == "":
+        index = -1
+    else:
+        index = int(index)
+    
 
 def sortAllTabs():
     pass
