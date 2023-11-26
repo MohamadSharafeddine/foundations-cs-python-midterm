@@ -30,6 +30,7 @@ def openTab():
     global last_opened_tab
     last_opened_tab = title
 
+# Function asks for index and then deletes (closes) the corresponding tab
 def closeTab():
     index = input("Enter index of the tab you'd like to close: ")
     while int(index) >= len(tabs):
