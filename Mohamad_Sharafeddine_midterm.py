@@ -5,12 +5,12 @@ import json
 # Data Structure
 tabs = [{'Title': 'Google', 'URL': 'https://www.google.com/', 'Nested Tabs': []}]
 
-# Insertion Sort, adjusted to sort based on "Title" key of a dictionary.
-def insertionSort(list1): # O(n^2)
+# Insertion Sort, adjusted to sort based on the value in the key "Title" in a dictionary.
+def insertionSort(list1): # O(N^2)
     border = 1
-    while border < len(list1):
+    while border < len(list1): # O(N)
         current = border
-        while current > 0 and list1[current]["Title"].lower() < list1[current - 1]["Title"].lower():
+        while current > 0 and list1[current]["Title"].lower() < list1[current - 1]["Title"].lower(): # O(N)
             list1[current], list1[current - 1] = list1[current - 1], list1[current]
             current -= 1
         border += 1
@@ -40,7 +40,7 @@ def closeTab(index): # O(N), N being the length of the list.
         del tabs[index_parent]["Nested Tabs"][index_nested]
     elif index == "":
         index = last_opened_tab
-        for i in range(len(tabs)):
+        for i in range(len(tabs)): # O(N)
             if tabs[i]["Title"] == last_opened_tab:
                 print("Closing", tabs[i]["Title"], "...")
                 del tabs[i]
@@ -59,7 +59,7 @@ def switchTab(index): # O(N), N being the length of the list.
         r = requests.get(tabs[index_parent]["Nested Tabs"][index_nested]["URL"])
     elif index == "":
         index = last_opened_tab
-        for i in range(len(tabs)):
+        for i in range(len(tabs)): # O(N)
             if tabs[i]["Title"] == last_opened_tab:
                 r = requests.get(tabs[i]["URL"])
     else:
@@ -71,10 +71,10 @@ def switchTab(index): # O(N), N being the length of the list.
 # Function displays all tabs including their nested tabs.
 def displayAllTabs(): # O(N^2), N being the length of the list.
     print("Opened tabs: ")
-    for tab in tabs:
+    for tab in tabs: # O(N)
         print(tab["Title"])
         if len(tab["Nested Tabs"]) > 0:
-            for nested_tab in tab["Nested Tabs"]:
+            for nested_tab in tab["Nested Tabs"]: # O(N)
                 print("  ", nested_tab["Title"])
 
 # Function adds a nested tab to the tab corresponding to the index.
