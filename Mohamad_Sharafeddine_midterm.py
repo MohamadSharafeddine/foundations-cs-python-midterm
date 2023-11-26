@@ -1,6 +1,5 @@
 import requests
 import json
-
 tabs = [{'Title': 'Google', 'URL': 'https://www.google.com/', 'Nested Tabs': []}]
 
 # Insertion Sort.
