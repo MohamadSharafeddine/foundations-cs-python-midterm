@@ -4,7 +4,7 @@ import json
 tabs = [{'Title': 'Google', 'URL': 'https://www.google.com/', 'Nested Tabs': []}]
 
 # Insertion Sort.
-def insertionSort(list1): #O(n^2)
+def insertionSort(list1): # O(n^2)
     border = 1
     while border < len(list1):
         current = border
@@ -14,11 +14,11 @@ def insertionSort(list1): #O(n^2)
         border += 1
 
 # Function displays menu.
-def displayMenu():
+def displayMenu(): # O(1)
     print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Sort All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit\n")
 
 # Function asks for Title and URL and then opens a new tab.
-def openTab():
+def openTab(): # O(1)
     title = input("Enter tab's title: ").capitalize()
     url = input("Enter tab's URL: ").lower()
     new_tab = {}
@@ -31,7 +31,7 @@ def openTab():
     last_opened_tab = title
 
 # Function asks for index and then deletes (closes) the corresponding tab.
-def closeTab():
+def closeTab(): # O(N), N being the length of the list.
     index = input("Enter index of the tab you'd like to close: ")
     while int(index) >= len(tabs):
         index = input(f"Index must be less than {len(tabs)}: ")
@@ -48,7 +48,7 @@ def closeTab():
         tabs.pop(index)
 
 # Function asks for index and then displays the HTML content of the corresponding tab.
-def switchTab():
+def switchTab(): # O(N), N being the length of the list.
     index = input("Enter index of the tab you'd like to display its content: ")
     while int(index) >= len(tabs):
         index = input(f"Index must be less than {len(tabs)}: ")
@@ -64,7 +64,7 @@ def switchTab():
     print(r.content) 
 
 # Function displays all tabs including their nested tabs.
-def displayAllTabs():
+def displayAllTabs(): # O(N^2), N being the length of the list.
     print("Opened tabs: ")
     for tab in tabs:
         print(tab["Title"])
@@ -73,7 +73,7 @@ def displayAllTabs():
                 print(f"  {nested_tab["Title"]}")
 
 # Function asks for index and then Title and URL to add a nested tab to the corresponding parent tab.
-def openNestedTab():
+def openNestedTab(): # O(1)
     index = int(input("Enter index of the tab you'd like to insert this tab in: "))
     while int(index) >= len(tabs):
         index = input(f"Index must be less than {len(tabs)}: ")
@@ -86,10 +86,10 @@ def openNestedTab():
     tabs[index]["Nested Tabs"].append(new_nested_tab)
 
 # Function uses Insertion Sort to sort all tabs, including nested tabs, alphabetically, based on their title.
-def sortAllTabs():
-    for tab in tabs:
-        insertionSort(tab["Nested Tabs"])
-    insertionSort(tabs)
+def sortAllTabs(): # O(N^3), N being the length of the list.
+    for tab in tabs: # O(N)
+        insertionSort(tab["Nested Tabs"]) # O(N^2)
+    insertionSort(tabs) # O(N^2)
     print("Tabs have been sorted.")
 
 # Function asks for a file path and writes the tabs list to the file in JSON format.
@@ -100,6 +100,7 @@ def saveTabs():
         save_file.write(json_object)
     print("Tabs saved.")
 
+# Function asks for a file path and loads tabs from the file.
 def importTabs():
     global tabs 
     file_path = input("Enter file path to save the current state of open tabs: ")
