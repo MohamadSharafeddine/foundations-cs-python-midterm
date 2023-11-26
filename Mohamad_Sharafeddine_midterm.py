@@ -12,16 +12,24 @@ def openTab():
     new_tab["URL"] = url
     new_tab["Nested Tabs"] = []
     tabs.append(new_tab)
+    global last_opened_tab
+    last_opened_tab = title
     print(f"{title} opened.")
     print(tabs)
+    print(last_opened_tab)
 
 def closeTab():
     index = input("Enter index of the tab you'd like to close: ")
     if index == "":
-        index = -1
+        index = last_opened_tab
+        print(last_opened_tab)
+        print("test")
+        for i in range(len(tabs)):
+            if tabs[i].get("Title") == last_opened_tab:
+                del tabs[i]
     else:
         index = int(index)
-    tabs.pop(index)
+        tabs.pop(index)
     print(tabs)
 
 def switchTab():
