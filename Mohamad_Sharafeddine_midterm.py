@@ -62,7 +62,8 @@ def switchTab():
         tab = tabs[index]
         r = requests.get(tab["URL"])
     print(r.content) 
-    
+
+# Function displays all tabs including their nested tabs
 def displayAllTabs():
     print("Opened tabs: ")
     for tab in tabs:
