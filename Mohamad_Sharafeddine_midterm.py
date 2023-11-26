@@ -41,12 +41,12 @@ def closeTab(): # O(N), N being the length of the list.
         index = last_opened_tab
         for i in range(len(tabs)):
             if tabs[i]["Title"] == last_opened_tab:
-                print(f"Closing {tabs[i]["Title"]}...")
+                print("Closing", tabs[i]["Title"], "...")
                 del tabs[i]
                 break
     else:
         index = int(index)
-        print(f"Closing {tabs[index]["Title"]}...")
+        print("Closing", tabs[index]["Title"], "...")
         tabs.pop(index)
 
 # Function asks for index and then displays the HTML content of the corresponding tab.
@@ -70,7 +70,7 @@ def displayAllTabs(): # O(N^2), N being the length of the list.
         print(tab["Title"])
         if len(tab["Nested Tabs"]) > 0:
             for nested_tab in tab["Nested Tabs"]:
-                print(f"  {nested_tab["Title"]}")
+                print("  ", nested_tab["Title"])
 
 # Function asks for index and then Title and URL to add a nested tab to the corresponding parent tab.
 def openNestedTab(): # O(1)
@@ -81,7 +81,7 @@ def openNestedTab(): # O(1)
     url = input("Enter tab's URL: ").lower()
     while url == "":
         url = input("Enter tab's URL (Can't be empty): ").lower()
-    print(f"Opening {title} in {tabs[index]["Title"]}...")
+    print("Opening", title, "in", tabs[index]["Title"], "...")
     new_nested_tab = {}
     new_nested_tab["Title"] = title
     new_nested_tab["URL"] = url
