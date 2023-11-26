@@ -1,6 +1,15 @@
 import requests
 import json
-tabs = [{'Title': 'Google', 'URL': 'https://www.google.com/', 'Nested Tabs': []}, {'Title': 'facebook', 'URL': 'https://www.facebook.com/', 'Nested Tabs': []}]
+tabs = [{'Title': 'google', 'URL': 'https://www.google.com/', 'Nested Tabs': []}, {'Title': 'facebook', 'URL': 'https://www.facebook.com/', 'Nested Tabs': []}]
+
+def insertionSort(list1): #O(n^2)
+    border = 1
+    while border < len(list1):
+        current = border
+        while current > 0 and list1[current]["Title"] < list1[current - 1]["Title"]:
+            list1[current], list1[current - 1] = list1[current - 1], list1[current]
+            current -= 1
+        border += 1
 
 def displayMenu():
     print("1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Sort All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
@@ -61,14 +70,13 @@ def openNestedTab():
     new_nested_tab = {}
     new_nested_tab["Title"] = title
     new_nested_tab["URL"] = url
-    tabs[index].get("Nested Tabs").append(new_nested_tab)
+    tabs[index]["Nested Tabs"].append(new_nested_tab)
 
 def sortAllTabs():
-    # for tab in tabs:
-    #     print(tab.items())
-    # print(tabs)
-    pass
-    
+    for tab in tabs:
+        insertionSort(tab["Nested Tabs"])
+    insertionSort(tabs)
+    print(tabs)
 
 def saveTabs():
     # json_object = json.dumps(tabs, indent=4)
