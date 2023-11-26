@@ -92,6 +92,7 @@ def sortAllTabs():
     insertionSort(tabs)
     print("Tabs have been sorted.")
 
+# Function asks for a file path and writes the tabs list to the file in JSON format.
 def saveTabs():
     file_path = input("Enter file path to save the current state of open tabs: ")
     json_object = json.dumps(tabs, indent=4)
