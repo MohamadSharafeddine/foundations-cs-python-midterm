@@ -93,7 +93,7 @@ def sortAllTabs(): # O(N^3), N being the length of the list.
     print("Tabs have been sorted.")
 
 # Function asks for a file path and writes the tabs list to the file in JSON format.
-def saveTabs():
+def saveTabs(): # Source: https://www.geeksforgeeks.org/python-json/
     file_path = input("Enter file path to save the current state of open tabs: ")
     json_object = json.dumps(tabs, indent=4)
     with open(file_path, "w") as save_file:
@@ -101,7 +101,7 @@ def saveTabs():
     print("Tabs saved.")
 
 # Function asks for a file path and loads tabs from the file.
-def importTabs():
+def importTabs(): # Source: https://www.codethebest.com/python/python-read-list-of-dictionaries-from-json-file-steps/
     global tabs 
     file_path = input("Enter file path to save the current state of open tabs: ")
     with open(file_path) as save_file:
