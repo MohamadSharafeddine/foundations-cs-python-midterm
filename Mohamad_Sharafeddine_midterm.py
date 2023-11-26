@@ -35,7 +35,7 @@ def closeTab():
 def switchTab():
     index = input("Enter index of the tab you'd like to display its content: ")
     if index == "":
-        index = -1
+        index = last_opened_tab
     else:
         index = int(index)
     tab = tabs[index]
