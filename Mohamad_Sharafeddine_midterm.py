@@ -1,12 +1,12 @@
 import requests
 import json
-tabs = [{'Title': 'google', 'URL': 'https://www.google.com/', 'Nested Tabs': []}, {'Title': 'facebook', 'URL': 'https://www.facebook.com/', 'Nested Tabs': []}]
+tabs = [{'Title': 'Google', 'URL': 'https://www.google.com/', 'Nested Tabs': []}, {'Title': 'Facebook', 'URL': 'https://www.facebook.com/', 'Nested Tabs': []}]
 
 def insertionSort(list1): #O(n^2)
     border = 1
     while border < len(list1):
         current = border
-        while current > 0 and list1[current]["Title"] < list1[current - 1]["Title"]:
+        while current > 0 and list1[current]["Title"].lower() < list1[current - 1]["Title"].lower():
             list1[current], list1[current - 1] = list1[current - 1], list1[current]
             current -= 1
         border += 1
@@ -15,8 +15,8 @@ def displayMenu():
     print("1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Sort All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
 
 def openTab():
-    title = input("Enter tab's title: ")
-    url = input("Enter tab's URL: ")
+    title = input("Enter tab's title: ").capitalize()
+    url = input("Enter tab's URL: ").lower()
     new_tab = {}
     new_tab["Title"] = title
     new_tab["URL"] = url
@@ -25,15 +25,11 @@ def openTab():
     global last_opened_tab
     last_opened_tab = title
     print(f"{title} opened.")
-    print(tabs)
-    print(last_opened_tab)
 
 def closeTab():
     index = input("Enter index of the tab you'd like to close: ")
     if index == "":
         index = last_opened_tab
-        print(last_opened_tab)
-        print("test")
         for i in range(len(tabs)):
             if tabs[i]["Title"] == last_opened_tab:
                 del tabs[i]
@@ -61,12 +57,12 @@ def displayAllTabs():
         print(tab["Title"])
         if len(tab["Nested Tabs"]) > 0:
             for nested_tab in tab["Nested Tabs"]:
-                print(f"    {nested_tab["Title"]}")
+                print(f"  {nested_tab["Title"]}")
 
 def openNestedTab():
     index = int(input("Enter index of the tab you'd like to insert this tab in: "))
-    title = input("Enter tab's title: ")
-    url = input("Enter tab's URL: ")
+    title = input("Enter tab's title: ").capitalize()
+    url = input("Enter tab's URL: ").lower()
     new_nested_tab = {}
     new_nested_tab["Title"] = title
     new_nested_tab["URL"] = url
@@ -79,8 +75,8 @@ def sortAllTabs():
     print(tabs)
 
 def saveTabs():
-    # json_object = json.dumps(tabs, indent=4)
-    # print(json_object)
+    json_object = json.dumps(tabs, indent=4)
+    print(json_object)
     pass
 
 def importTabs():
