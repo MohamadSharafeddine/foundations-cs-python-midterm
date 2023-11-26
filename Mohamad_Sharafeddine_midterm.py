@@ -25,7 +25,7 @@ def closeTab():
         print(last_opened_tab)
         print("test")
         for i in range(len(tabs)):
-            if tabs[i].get("Title") == last_opened_tab:
+            if tabs[i]["Title"] == last_opened_tab:
                 del tabs[i]
                 break
     else:
@@ -38,19 +38,20 @@ def switchTab():
     if index == "":
         index = last_opened_tab
         for i in range(len(tabs)):
-            if tabs[i].get("Title") == last_opened_tab:
-                r = requests.get(tabs[i].get("URL"))
+            if tabs[i]["Title"] == last_opened_tab:
+                r = requests.get(tabs[i]["URL"])
     else:
         index = int(index)
         tab = tabs[index]
-        r = requests.get(tab.get("URL"))
+        r = requests.get(tab["URL"])
     print(r.content) 
     
 def displayAllTabs():
     for tab in tabs:
-        print(tab.get("Title"))
-        if len(tab.get("Nested Tabs")) > 1:
-            print(f"    {tab.get("Nested Tabs")}")
+        print(tab["Title"])
+        if len(tab["Nested Tabs"]) > 0:
+            for nested_tab in tab["Nested Tabs"]:
+                print(f"    {nested_tab["Title"]}")
 
 def openNestedTab():
     index = int(input("Enter index of the tab you'd like to insert this tab in: "))
