@@ -47,6 +47,7 @@ def closeTab():
         print(f"Closing {tabs[index]["Title"]}...")
         tabs.pop(index)
 
+# Function asks for index and then displays the HTML content of the corresponding tab
 def switchTab():
     index = input("Enter index of the tab you'd like to display its content: ")
     while int(index) >= len(tabs):
