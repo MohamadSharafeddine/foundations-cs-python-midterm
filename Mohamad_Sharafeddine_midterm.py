@@ -12,7 +12,7 @@ def insertionSort(list1): #O(n^2)
         border += 1
 
 def displayMenu():
-    print("1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Sort All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit")
+    print("\n1. Open Tab\n2. Close Tab\n3. Switch Tab\n4. Display All Tabs\n5. Open Nested Tab\n6. Sort All Tabs\n7. Save Tabs\n8. Import Tabs\n9. Exit\n")
 
 def openTab():
     title = input("Enter tab's title: ").capitalize()
@@ -21,10 +21,10 @@ def openTab():
     new_tab["Title"] = title
     new_tab["URL"] = url
     new_tab["Nested Tabs"] = []
+    print(f"Opening {title}...")
     tabs.append(new_tab)
     global last_opened_tab
     last_opened_tab = title
-    print(f"{title} opened.")
 
 def closeTab():
     index = input("Enter index of the tab you'd like to close: ")
@@ -32,11 +32,14 @@ def closeTab():
         index = last_opened_tab
         for i in range(len(tabs)):
             if tabs[i]["Title"] == last_opened_tab:
+                print(f"Closing {tabs[i]["Title"]}...")
                 del tabs[i]
                 break
     else:
         index = int(index)
+        print(f"Closing {tabs[index]["Title"]}...")
         tabs.pop(index)
+        
     print(tabs)
 
 def switchTab():
@@ -72,7 +75,6 @@ def sortAllTabs():
     for tab in tabs:
         insertionSort(tab["Nested Tabs"])
     insertionSort(tabs)
-    print(tabs)
 
 def saveTabs():
     json_object = json.dumps(tabs, indent=4)
