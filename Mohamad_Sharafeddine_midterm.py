@@ -20,7 +20,11 @@ def displayMenu(): # O(1)
 # Function asks for Title and URL and then opens a new tab.
 def openTab(): # O(1)
     title = input("Enter tab's title: ").capitalize()
+    while title == "":
+        title = input("Enter tab's title (Can't be empty): ").capitalize()
     url = input("Enter tab's URL: ").lower()
+    while url == "":
+        url = input("Enter tab's URL (Can't be empty): ").lower()
     new_tab = {}
     new_tab["Title"] = title
     new_tab["URL"] = url
@@ -33,8 +37,6 @@ def openTab(): # O(1)
 # Function asks for index and then deletes (closes) the corresponding tab.
 def closeTab(): # O(N), N being the length of the list.
     index = input("Enter index of the tab you'd like to close: ")
-    while int(index) >= len(tabs):
-        index = input(f"Index must be less than {len(tabs)}: ")
     if index == "":
         index = last_opened_tab
         for i in range(len(tabs)):
@@ -50,8 +52,6 @@ def closeTab(): # O(N), N being the length of the list.
 # Function asks for index and then displays the HTML content of the corresponding tab.
 def switchTab(): # O(N), N being the length of the list.
     index = input("Enter index of the tab you'd like to display its content: ")
-    while int(index) >= len(tabs):
-        index = input(f"Index must be less than {len(tabs)}: ")
     if index == "":
         index = last_opened_tab
         for i in range(len(tabs)):
@@ -75,10 +75,12 @@ def displayAllTabs(): # O(N^2), N being the length of the list.
 # Function asks for index and then Title and URL to add a nested tab to the corresponding parent tab.
 def openNestedTab(): # O(1)
     index = int(input("Enter index of the tab you'd like to insert this tab in: "))
-    while int(index) >= len(tabs):
-        index = input(f"Index must be less than {len(tabs)}: ")
     title = input("Enter tab's title: ").capitalize()
+    while title == "":
+        title = input("Enter tab's title (Can't be empty): ").capitalize()
     url = input("Enter tab's URL: ").lower()
+    while url == "":
+        url = input("Enter tab's URL (Can't be empty): ").lower()
     print(f"Opening {title} in {tabs[index]["Title"]}...")
     new_nested_tab = {}
     new_nested_tab["Title"] = title
