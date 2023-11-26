@@ -29,6 +29,8 @@ def openTab():
 
 def closeTab():
     index = input("Enter index of the tab you'd like to close: ")
+    while int(index) >= len(tabs):
+        index = input(f"Index must be less that {len(tabs)}: ")
     if index == "":
         index = last_opened_tab
         for i in range(len(tabs)):
