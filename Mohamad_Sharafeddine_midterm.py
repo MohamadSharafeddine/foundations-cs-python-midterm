@@ -36,8 +36,14 @@ def openTab(): # O(1)
 
 # Function asks for index and then deletes (closes) the corresponding tab.
 def closeTab(): # O(N), N being the length of the list.
-    index = input("Enter index of the tab you'd like to close: ")
-    if index == "":
+    index = input("Enter index of the tab you'd like to close (if the tab is nested separate it's index by a comma): ")
+    if "," in index:
+        index_list = index.split(",")
+        index_parent = int(index_list[0].strip())
+        index_nested = int(index_list[1].strip())
+        print("Closing", tabs[index_parent]["Nested Tabs"][index_nested]["Title"], "...")
+        del tabs[index_parent]["Nested Tabs"][index_nested]
+    elif index == "":
         index = last_opened_tab
         for i in range(len(tabs)):
             if tabs[i]["Title"] == last_opened_tab:
@@ -51,8 +57,14 @@ def closeTab(): # O(N), N being the length of the list.
 
 # Function asks for index and then displays the HTML content of the corresponding tab.
 def switchTab(): # O(N), N being the length of the list.
-    index = input("Enter index of the tab you'd like to display its content: ")
-    if index == "":
+    index = input("Enter index of the tab you'd like to display its content (if the tab is nested separate it's index by a comma): ")
+    if "," in index:
+        index_list = index.split(",")
+        index_parent = int(index_list[0].strip())
+        index_nested = int(index_list[1].strip())
+        # print("Closing", tabs[index_parent]["Nested Tabs"][index_nested]["Title"], "...")
+        r = requests.get(tabs[index_parent]["Nested Tabs"][index_nested]["URL"])
+    elif index == "":
         index = last_opened_tab
         for i in range(len(tabs)):
             if tabs[i]["Title"] == last_opened_tab:
