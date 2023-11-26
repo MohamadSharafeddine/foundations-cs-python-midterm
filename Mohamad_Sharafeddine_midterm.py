@@ -62,7 +62,6 @@ def switchTab(): # O(N), N being the length of the list.
         index_list = index.split(",")
         index_parent = int(index_list[0].strip())
         index_nested = int(index_list[1].strip())
-        # print("Closing", tabs[index_parent]["Nested Tabs"][index_nested]["Title"], "...")
         r = requests.get(tabs[index_parent]["Nested Tabs"][index_nested]["URL"])
     elif index == "":
         index = last_opened_tab
