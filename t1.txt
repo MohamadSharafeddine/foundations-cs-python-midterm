@@ -1,0 +1,22 @@
+[
+    {
+        "Title": "Facebook",
+        "URL": "https://www.facebook.com/",
+        "Nested Tabs": []
+    },
+    {
+        "Title": "Google",
+        "URL": "https://www.google.com/",
+        "Nested Tabs": [
+            {
+                "Title": "Gmail",
+                "URL": "https://gmail.google.com/"
+            }
+        ]
+    },
+    {
+        "Title": "Netflix",
+        "URL": "https://www.netflix.com/",
+        "Nested Tabs": []
+    }
+]

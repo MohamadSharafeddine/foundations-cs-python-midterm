@@ -117,7 +117,9 @@ def importTabs(): # Source: https://www.codethebest.com/python/python-read-list-
     global tabs 
     file_path = input("Enter file path to import Tabs from: ")
     with open(file_path) as save_file:
-        tabs = json.load(save_file)
+        loaded_tabs = json.load(save_file)
+        for tab in loaded_tabs:
+            tabs.append(tab)
     print("Tabs imported.")
 
 def main():
