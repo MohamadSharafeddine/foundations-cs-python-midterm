@@ -53,12 +53,13 @@ def displayAllTabs():
             print(f"    {tab.get("Nested Tabs")}")
 
 def openNestedTab():
-    index = input("Enter index of the tab you'd like to insert this tab in: ")
-    if index == "":
-        index = -1
-    else:
-        index = int(index)
-    
+    index = int(input("Enter index of the tab you'd like to insert this tab in: "))
+    title = input("Enter tab's title: ")
+    url = input("Enter tab's URL: ")
+    new_nested_tab = {}
+    new_nested_tab["Title"] = title
+    new_nested_tab["URL"] = url
+    tabs[index].get("Nested Tabs").append(new_nested_tab)
 
 def sortAllTabs():
     pass
