@@ -75,6 +75,7 @@ def sortAllTabs():
     for tab in tabs:
         insertionSort(tab["Nested Tabs"])
     insertionSort(tabs)
+    print("All tabs have been sorted.")
 
 def saveTabs():
     json_object = json.dumps(tabs, indent=4)
