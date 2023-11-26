@@ -1,4 +1,5 @@
 import requests
+import json
 tabs = [{'Title': 'Google', 'URL': 'https://www.google.com/', 'Nested Tabs': []}, {'Title': 'facebook', 'URL': 'https://www.facebook.com/', 'Nested Tabs': []}]
 
 def displayMenu():
@@ -63,9 +64,15 @@ def openNestedTab():
     tabs[index].get("Nested Tabs").append(new_nested_tab)
 
 def sortAllTabs():
+    # for tab in tabs:
+    #     print(tab.items())
+    # print(tabs)
     pass
+    
 
 def saveTabs():
+    # json_object = json.dumps(tabs, indent=4)
+    # print(json_object)
     pass
 
 def importTabs():
